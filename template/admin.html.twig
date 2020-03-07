@@ -1,0 +1,537 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <section style="padding: 75px 20px 50px;background: white; height: 100%; overflow: auto; margin-bottom: 200px;">
+        <div class="text-center">
+            <h1>Planning des diffusions</h1>
+
+            <form method="post" action="../bdd_planning.php">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Lundi</th>
+                    <th scope="col">Mardi</th>
+                    <th scope="col">Mercredi</th>
+                    <th scope="col">Jeudi</th>
+                    <th scope="col">Vendredi</th>
+                    <th scope="col">Samedi</th>
+                    <th scope="col">Dimanche</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row"><6h</th>
+                    <td class=""><p>
+                            <select name="av6lundi">
+                                <option {% if( lundiav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( lundiav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( lundiav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( lundiav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( lundiav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( lundiav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( lundiav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( lundiav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6mardi">
+                                <option {% if( mardiav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mardiav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mardiav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mardiav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mardiav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mardiav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mardiav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mardiav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6mercredi">
+                                <option {% if( mercrediav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mercrediav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mercrediav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mercrediav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mercrediav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mercrediav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mercrediav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mercrediav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6jeudi">
+                                <option {% if( jeduiav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( jeduiav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( jeduiav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( jeduiav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( jeduiav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( jeduiav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( jeduiav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( jeduiav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6vendredi">
+                                <option {% if( vendrediav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( vendrediav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( vendrediav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( vendrediav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( vendrediav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( vendrediav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( vendrediav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( vendrediav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6samedi">
+                                <option {% if( samediav6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( samediav6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( samediav6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( samediav6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( samediav6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( samediav6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( samediav6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( samediav6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="av6dimanche">
+                                <option {% if( dimanchev6 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( dimanchev6 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( dimanchev6 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( dimanchev6 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( dimanchev6 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( dimanchev6 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( dimanchev6 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( dimanchev6 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">6h-7h</th>
+                    <td class=""><p>
+                            <select name="lundi6_7">
+                                <option {% if( lundi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( lundi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( lundi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( lundi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( lundi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( lundi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( lundi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( lundi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mardi6_7">
+                                <option {% if( mardi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mardi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mardi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mardi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mardi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mardi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mardi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mardi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mercredi6_7">
+                                <option {% if( mercredi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mercredi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mercredi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mercredi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mercredi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mercredi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mercredi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mercredi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="jeudi6_7">
+                                <option {% if( jeudi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( jeudi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( jeudi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( jeudi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( jeudi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( jeudi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( jeudi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( jeudi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="vendredi6_7">
+                                <option {% if( vendredi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( vendredi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( vendredi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( vendredi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( vendredi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( vendredi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( vendredi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( vendredi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="samedi6_7">
+                                <option {% if( samedi6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( samedi6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( samedi6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( samedi6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( samedi6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( samedi6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( samedi6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( samedi6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="dimanche6_7">
+                                <option {% if( dimanche6_7 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( dimanche6_7 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( dimanche6_7 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( dimanche6_7 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( dimanche6_7 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( dimanche6_7 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( dimanche6_7 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( dimanche6_7 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">7h-8h</th>
+                    <td class=""><p>
+                            <select name="lundi7_8">
+                                <option {% if( lundi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( lundi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( lundi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( lundi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( lundi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( lundi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( lundi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( lundi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mardi7_8">
+                                <option {% if( mardi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mardi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mardi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mardi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mardi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mardi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mardi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mardi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mercredi7_8">
+                                <option {% if( mercredi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mercredi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mercredi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mercredi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mercredi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mercredi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mercredi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mercredi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="jeudi7_8">
+                                <option {% if( jeudi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( jeudi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( jeudi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( jeudi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( jeudi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( jeudi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( jeudi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( jeudi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="vendredi7_8">
+                                <option {% if( vendredi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( vendredi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( vendredi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( vendredi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( vendredi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( vendredi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( vendredi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( vendredi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="samedi7_8">
+                                <option {% if( samedi7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( samedi7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( samedi7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( samedi7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( samedi7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( samedi7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( samedi7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( samedi7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="dimanche7_8">
+                                <option {% if( dimanche7_8 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( dimanche7_8 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( dimanche7_8 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( dimanche7_8 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( dimanche7_8 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( dimanche7_8 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( dimanche7_8 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( dimanche7_8 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">8h-9h</th>
+                    <td class=""><p>
+                            <select name="lundi8_9">
+                                <option {% if( lundi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( lundi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( lundi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( lundi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( lundi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( lundi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( lundi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( lundi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mardi8_9">
+                                <option {% if( mardi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mardi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mardi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mardi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mardi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mardi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mardi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mardi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="mercredi8_9">
+                                <option {% if( mercredi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( mercredi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( mercredi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( mercredi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( mercredi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( mercredi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( mercredi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( mercredi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="jeudi8_9">
+                                <option {% if( jeudi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( jeudi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( jeudi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( jeudi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( jeudi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( jeudi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( jeudi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( jeudi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="vendredi8_9">
+                                <option {% if( vendredi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( vendredi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( vendredi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( vendredi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( vendredi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( vendredi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( vendredi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( vendredi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="samedi8_9">
+                                <option {% if( samedi8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( samedi8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( samedi8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( samedi8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( samedi8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( samedi8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( samedi8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( samedi8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                    <td class=""><p>
+                            <select name="dimanche8_9">
+                                <option {% if( dimanche8_9 == "annee80")%}selected{% endif %} value="annee80">Année 80</option>
+                                <option {% if( dimanche8_9 == "classique")%}selected{% endif %} value="classique">Classique</option>
+                                <option {% if( dimanche8_9 == "commercial")%}selected{% endif %} value="commercial">Commercial</option>
+                                <option {% if( dimanche8_9 == "electro")%}selected{% endif %} value="electro">Electro</option>
+                                <option {% if( dimanche8_9 == "jazz")%}selected{% endif %} value="jazz">Jazz</option>
+                                <option {% if( dimanche8_9 == "latino")%}selected{% endif %} value="latino">Latino</option>
+                                <option {% if( dimanche8_9 == "rap")%}selected{% endif %} value="rap">Rap</option>
+                                <option {% if( dimanche8_9 == "variete")%}selected{% endif %} value="variete">Variété</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">9h-10h</th>
+                    <td class="playlist-electro-swing"><p>Electro-Swing</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">10h-11h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">11h-12h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">12h-13h</th>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">13h-14h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">14h-15h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">15h-16h</th>
+                    <td class="playlist-electro-swing"><p>Electro-Swing</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">16h-17h</th>
+                    <td class="playlist-electro-swing"><p>Electro-Swing</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">17h-18h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">18h-19h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">19h-20h</th>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                    <td class="playlist-emission"><p>Emission</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">20h-21h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">21h-22h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">22h-23h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">23h-24h</th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">24h></th>
+                    <td class="playlist-electro"><p>Electro</p></td>
+                    <td class="playlist-jazz"><p>Jazz</p></td>
+                    <td class="playlist-classique"><p>Classique</p></td>
+                    <td class="playlist-commercial"><p>Commercial</p></td>
+                    <td class="playlist-varietes"><p>Variétés</p></td>
+                    <td class="playlist-latino"><p>Latino</p></td>
+                    <td class="playlist-rap"><p>Rap</p></td>
+                </tr>
+                </tbody>
+            </table>
+                <input type="submit">
+            </form>
+        </div>
+    </section>
+{% endblock %}

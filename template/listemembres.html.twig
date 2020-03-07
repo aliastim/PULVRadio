@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <section style="padding: 75px 20px 50px;background: #111111; height: 100%; overflow: auto; color: white;">
+        <div class="text-center">
+            <h1 class="soulignement">Liste des membres</h1>
+        </div>
+
+        <div class="row table-playlist text-center">
+            {% for membre in membres %}
+                <div class="col-2"><img class="forum-avatar" src="../img/miniatures/{{ membre.avatar }}.png"></div>
+                <div class="col-5" style="border-left: 2px solid #31bdec;"><a href="../utilisateur.php?utilisateur={{ membre.pseudo }}">{{ membre.pseudo }}</a></div>
+                <div class="col-5" style="border-right: 2px solid #31bdec;"><p>{{ membre.admin }}</p></div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    {% if isConnected|default(false)  %}
+        <section class="section-main text-center" style="background: black; color: white;">
+            <h1 class="soulignement text-center">Mon Compte</h1>
+
+            <form action="../bdd_user_edit.php" method="post">
+            <div class="row">
+                <div class="col-3">
+                    <img class="monAvatar" src="../img/miniatures/{{ avatar }}.png">
+                </div>
+                <div class="col-9">
+
+
+                        <div id="avatar">
+                            <input type="radio" name="avatar" id="avatar1" value="avatar1" {% if avatar == "avatar1" %}checked{% endif %}/>
+                            <label for="avatar1" class="{% if avatar == "avatar1" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar1.png" alt="avatar1" /></label>
+
+                            <input type="radio" name="avatar" id="avatar2" value="avatar2" {% if avatar == "avatar2" %}checked{% endif %}/>
+                            <label for="avatar2" class="{% if avatar == "avatar2" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar2.png" alt="avatar2" /></label>
+
+                            <input type="radio" name="avatar" id="avatar3" value="avatar3" {% if avatar == "avatar3" %}checked{% endif %}/>
+                            <label for="avatar3" class="{% if avatar == "avatar3" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar3.png" alt="avatar3" /></label>
+
+                            <input type="radio" name="avatar" id="avatar4" value="avatar4" {% if avatar == "avatar4" %}checked{% endif %}/>
+                            <label for="avatar4" class="{% if avatar == "avatar4" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar4.png" alt="avatar4" /></label>
+
+                            <input type="radio" name="avatar" id="avatar5" value="avatar5" {% if avatar == "avatar5" %}checked{% endif %}/>
+                            <label for="avatar5" class="{% if avatar == "avatar5" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar5.png" alt="avatar5" /></label>
+
+                            <input type="radio" name="avatar" id="avatar6" value="avatar6" {% if avatar == "avatar6" %}checked{% endif %}/>
+                            <label for="avatar6" class="{% if avatar == "avatar6" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar6.png" alt="avatar6" /></label>
+
+                            <input type="radio" name="avatar" id="avatar7" value="avatar7" {% if avatar == "avatar7" %}checked{% endif %}/>
+                            <label for="avatar7" class="{% if avatar == "avatar7" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar7.png" alt="avatar7" /></label>
+
+                            <input type="radio" name="avatar" id="avatar8" value="avatar8" {% if avatar == "avatar8" %}checked{% endif %}/>
+                            <label for="avatar8" class="{% if avatar == "avatar8" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar8.png" alt="avatar8" /></label>
+
+                            <input type="radio" name="avatar" id="avatar9" value="avatar9" {% if avatar == "avatar9" %}checked{% endif %}/>
+                            <label for="avatar9" class="{% if avatar == "avatar9" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar9.png" alt="avatar9" /></label>
+
+                            <input type="radio" name="avatar" id="avatar10" value="avatar10" {% if avatar == "avatar10" %}checked{% endif %}>
+                            <label for="avatar10" class="{% if avatar == "avatar10" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar10.png" alt="avatar10" /></label>
+
+                            <input type="radio" name="avatar" id="avatar11" value="avatar11" {% if avatar == "avatar11" %}checked{% endif %}/>
+                            <label for="avatar11" class="{% if avatar == "avatar11" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar11.png" alt="avatar11" /></label>
+
+                            <input type="radio" name="avatar" id="avatar12" value="avatar12" {% if avatar == "avatar12" %}checked{% endif %}/>
+                            <label for="avatar12" class="{% if avatar == "avatar12" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar12.png" alt="avatar12" /></label>
+
+                            <input type="radio" name="avatar" id="avatar13" value="avatar13" {% if avatar == "avatar13" %}checked{% endif %}/>
+                            <label for="avatar13" class="{% if avatar == "avatar13" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar13.png" alt="avatar13" /></label>
+
+                            <input type="radio" name="avatar" id="avatar14" value="avatar14" {% if avatar == "avatar14" %}checked{% endif %}/>
+                            <label for="avatar14" class="{% if avatar == "avatar14" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar14.png" alt="avatar14" /></label>
+
+                            <input type="radio" name="avatar" id="avatar15" value="avatar15" {% if avatar == "avatar15" %}checked{% endif %}/>
+                            <label for="avatar15" class="{% if avatar == "avatar15" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar15.png" alt="avatar15" /></label>
+
+                            <input type="radio" name="avatar" id="avatar16" value="avatar16" {% if avatar == "avatar16" %}checked{% endif %}/>
+                            <label for="avatar16" class="{% if avatar == "avatar16" %}selected-avatar{% endif %}"><img src="../img/miniatures/avatar16.png" alt="avatar16" /></label>
+                        </div>
+                        <!-- https://stackoverflow.com/questions/3896156/how-do-i-style-radio-buttons-with-images-laughing-smiley-for-good-sad-smiley/3896259 -->
+                        <!-- Voir style.js -->
+
+
+
+                </div>
+            </div>
+                <input type="submit" value="sauvegarder">
+            </form>
+
+            <form method="post" action="../bdd_user_disconnect.php">
+                <input class="btn btn-danger" type="submit" value="Déconnecter">
+            </form>
+
+
+        </section>
+    {% else %}
+    <section class="section-compte" style="">
+        <div class="d-flex h-100 w-100 align-items-center justify-content-center">
+            <div class="text-center moncompte-form">
+                <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: none !important;">
+                    <li class="nav-item moncompte-nav-item">
+                        <a class="nav-link moncompte-nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Connexion</a>
+                    </li>
+                    <li class="nav-item moncompte-nav-item">
+                        <a class="nav-link moncompte-nav-link" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Inscription</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent" style="height: calc(100% - 50px)">
+                    <div class="moncompte-tab h-100 tab-pane fade" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                        <form action="../bdd_user_new.php" method="post" class="h-100">
+                            <h1>S'inscrire</h1>
+                            <div class="hr"></div>
+
+                            <div class="d-flex align-items-center" style="height: calc(100% - 50px); flex-direction: column; justify-content: center; margin-top: -50px; overflow: hidden;">
+
+                                <img src="../img/PULVRadio_Logo.png">
+
+                                <div class="row w-100">
+                                    <div class="compte-form-icone"><i class="fas fa-user"></i></div>
+                                    <input id="pseudo" type="text" name="pseudo" placeholder="Entrez un pseudo" required>
+                                </div>
+
+                                <div class="row w-100">
+                                    <div class="compte-form-icone"><i class="fas fa-lock"></i></div>
+                                    <input id="password" type="password" name="password" placeholder="Entrez un mot de passe" required>
+                                </div>
+
+                                {% if useralreadyexist|default(false) %}
+                                    <small>Ce pseudo existe déjà</small>
+                                {% endif %}
+
+                            </div>
+
+                            <input type="hidden" name="url" value="{{ url }}">
+                            <div class="w-100 d-flex justify-content-center">
+                                <button type="submit">Envoyer</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="moncompte-tab h-100 tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                        <form action="../bdd_user.php" method="post" class="h-100">
+                            <h1>Se connecter</h1>
+                            <div class="hr"></div>
+
+                            <div class="d-flex align-items-center" style="height: calc(100% - 50px); flex-direction: column; justify-content: center; margin-top: -50px; overflow: hidden;">
+
+                                <img src="../img/PULVRadio_Logo.png">
+
+                                <div class="row w-100">
+                                    <div class="compte-form-icone"><i class="fas fa-user"></i></div>
+                                    <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" required>
+                                </div>
+
+                                <div class="row w-100">
+                                    <div class="compte-form-icone"><i class="fas fa-lock"></i></div>
+                                    <input id="password" type="password" name="password" placeholder="Mot de passe" required>
+                                </div>
+                                {% if badusername|default(false) %}
+                                <small>Ce pseudo n'existe pas</small>
+                                {% endif %}
+                                {% if badpassword|default(false) %}
+                                    <small>Mot de passe incorrect</small>
+                                {% endif %}
+                            </div>
+
+                            <input type="hidden" name="url" value="{{ url }}">
+                            <div class="w-100 d-flex justify-content-center">
+                                <button type="submit">Connexion</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+
+{% endblock %}

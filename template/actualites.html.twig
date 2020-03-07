@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <section class="masthead" style="padding-bottom:50px; padding-top: 100px;">
+        <div class="container-homepage h-100">
+            <div class="row h-100"  style="/*background: white;*/ background: #111111; padding-top: 10px; margin-bottom: 10px; color: white;"><!-- align-items-center -->
+                <div class="col-12 text-center" >
+                    <!--<h1 class="soulignement">Actualités</h1>-->
+
+                    {% if isConnected|default(false)  %}
+                        {% if user.admin == "admin"  %}
+                            <div class="w-100 text-left" id="actu0">
+                                <button class="actualite-submit" onclick="actu();"><i class="fas fa-pencil-alt"></i> Écrire un article</button>
+                            </div>
+
+                            <form action="../bdd_actualites_new.php" method="post" id="actu1">
+                                <div class="form-group text-left">
+                                    <label for="exampleFormControlTextarea1">Écrire un article :</label>
+                                    <textarea class="form-control area-article" id="exampleFormControlTextarea1" rows="3" name="message" required></textarea>
+                                    <input type="hidden" name="url" value="{{ url }}">
+                                </div>
+                                <div class="w-100 text-center">
+                                    <button class="actualite-submit" type="submit"><i class="fas fa-sync-alt"></i> Envoyer</button>
+                                </div>
+                            </form>
+
+                            <script type="text/javascript">
+                                document.getElementById('actu1').classList.add('actu-disallow');
+                                function actu() {
+                                    document.getElementById('actu0').classList.add('actu-disallow');
+                                    document.getElementById('actu1').classList.remove('actu-disallow');
+                                }
+                            </script>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+                {% for actu in actus %}
+                <div class="col-md-6 col-12">
+                    <div class="row actualite-cadre">
+                        <div class="col-9">
+                            <div class="row">
+                                <img class="forum-avatar" src="../img/miniatures/{{ actu.user.avatar }}.png">
+                                <p><strong><a href="../utilisateur.php?utilisateur={{ actu.user.pseudo }}" style="color: white;">{{ actu.user.pseudo }}</a></strong><br><label>{{ actu.date |date("d/m/Y") }}</label></p>
+                            </div>
+                        </div>
+                        <div class="col-3 text-right">
+                            {% if dernierid == actu.id %}
+                            <label class="label-new">New</label>
+                            {% endif %}
+                        </div>
+                        <div class="col-12" style="text-align: justify;">{{ actu.message }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

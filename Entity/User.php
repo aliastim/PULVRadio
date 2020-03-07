@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  *
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepo")
  * @ORM\Table(name="user")
  */
 class User
@@ -30,28 +30,7 @@ class User
      *
      * @ORM\Column(type="string")
      */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    private $firstname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    private $num;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    private $mail;
+    private $pseudo;
 
     /**
      * @var string
@@ -59,6 +38,20 @@ class User
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $admin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $avatar;
 
     const MAX_PER_PAGE       = 10;
 
@@ -85,18 +78,18 @@ class User
     /**
      * @return string
      */
-    public function getName(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->name;
+        return $this->pseudo;
     }
 
     /**
      * @return User
-     * @param string $name
+     * @param string $pseudo
      */
-    public function setName($name): User
+    public function setPseudo($pseudo): User
     {
-        $this->name = $name;
+        $this->pseudo = $pseudo;
 
         return $this;
     }
@@ -104,56 +97,18 @@ class User
     /**
      * @return string
      */
-    public function getFirstname(): ?string
+    public function getAdmin(): ?string
     {
-        return $this->firstname;
+        return $this->admin;
     }
 
     /**
      * @return User
-     * @param string $firstname
+     * @param string $admin
      */
-    public function setFirstname($firstname): User
+    public function setAdmin($admin): User
     {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNum(): ?string
-    {
-        return $this->num;
-    }
-
-    /**
-     * @return User
-     * @param string $num
-     */
-    public function setNum($num): User
-    {
-        $this->num = $num;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    /**
-     * @return User
-     * @param string $mail
-     */
-    public function setMail($mail): User
-    {
-        $this->mail = $mail;
+        $this->admin = $admin;
 
         return $this;
     }
@@ -174,6 +129,25 @@ class User
     public function setPassword($password): User
     {
         $this->password = password_hash($password, PASSWORD_BCRYPT);
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @return User
+     * @param string $avatar
+     */
+    public function setAvatar($avatar): User
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

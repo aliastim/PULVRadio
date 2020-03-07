@@ -6,24 +6,338 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title|default('Titre par défaut de mon site web') }}</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../src/style.css">
+    <link href="../src/all.css" rel="stylesheet">
+
 </head>
 <body>
 {% block body %}
 
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+            <!--<div class="area"></div>
+            <nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="http://justinfarrow.com">
+                        <i class="fa fa-home fa-2x" style="margin-top: 10px;"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text">
+                            Stars Components
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+                            Forms
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+                            Pages
+                        </span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o fa-2x"></i>
+                        <span class="nav-text">
+                            Graphs and Statistics
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-font fa-2x"></i>
+                        <span class="nav-text">
+                           Quotes
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-table fa-2x"></i>
+                        <span class="nav-text">
+                            Tables
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Maps
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+                            Documentation
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>-->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="/*padding: 5px 0 5px 0 !important*/ padding: 0 !important;">
+                <div class="text-center nav-title">
+                    <a class="navbar-brand w-100" href="../index.php">
+                        <img class="img-fluid" src="../img/PULVRadio_Logo_cadre.png" alt="PULVRadio logo cadre" style="/*max-width: 300px; max-height: 44px; margin-right: -5px;*/">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../index.php"><i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../actualites.php"><i class="fas fa-newspaper"></i> Actualité</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-broadcast-tower"></i> La radio
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../podcasts.php">Podcasts</a>
+                                <a class="dropdown-item" href="#">Comment nous écouter</a>
+                                <a class="dropdown-item" href="#">L'équipe</a>
+                                <a class="dropdown-item" href="#">Nos partenaires</a>
+                                <a class="dropdown-item" href="#">Nous rejoindre</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Les émissions
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../planning.php">Planning des diffusions</a>
+                                <a class="dropdown-item" href="#">Dernières diffusions</a>
+                                <a class="dropdown-item" href="#">Le 12-13</a>
+                                <a class="dropdown-item" href="#">Le 19-20</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                La communauté
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="../compte.php">Mon Compte/S'inscrire</a>
+                                <a class="dropdown-item" href="../listemembres.php">Liste des membres</a>
+                                <a class="dropdown-item" href="#">FAQ</a>
+                                <a class="dropdown-item" href="../forum.php">Le Forum !</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contact.php">Contact <i class="fas fa-phone-alt"></i></a>
+                        </li>
+                    </ul>
+                    <!--<div class="nombre-auditeurs">
+                        <p><i class="fas fa-headphones"></i> {{ auditeurs }} auditeur(s)</p>
+                    </div>-->
+                </div>
+            </nav>
+            <div class="div-dedicace">
+                <div class="marquee" style="width: 100% !important;">
+                    <div>
+
+                            <span class="text-center">
+                                {% for dedicace in dedicaces %}
+                                    <strong style="color: white; text-shadow: 0 0 5px #cc2aa7; /*padding-right: 20px;*/ padding-left: 50px;">{{ dedicace.pseudo }}:</strong>&nbsp;&nbsp; {{ dedicace.dedicace }}
+                                {% endfor %}
+                            </span>
+                            <span class="text-center">
+                                {% for dedicace in dedicaces %}
+                                    <strong style="color: white; text-shadow: 0 0 5px #cc2aa7; /*padding-right: 20px;*/ padding-left: 50px;">{{ dedicace.pseudo }}:</strong>&nbsp;&nbsp; {{ dedicace.dedicace }}
+                                {% endfor %}
+                            </span>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-------------------------------------------- -->
+                    <div class="nav-left">
+                        <script>
+                            (function (win, doc, script, source, objectName) { (win.RadionomyPlayerObject = win.RadionomyPlayerObject || []).push(objectName); win[objectName] = win[objectName] || function (k, v) { (win[objectName].parameters = win[objectName].parameters || { src: source, version: '1.1' })[k] = v; }; var js, rjs = doc.getElementsByTagName(script)[0]; js = doc.createElement(script); js.async = 1; js.src = source; rjs.parentNode.insertBefore(js, rjs); }(window, document, 'script', 'https://www.radionomy.com/js/radionomy.player.js', 'radplayer'));
+                            radplayer('url', 'pulvradio');
+                            radplayer('type', 'medium');
+                            radplayer('autoplay', '0');
+                            radplayer('volume', '50');
+                            radplayer('color1', '#000000');
+                            radplayer('color2', '#ffffff');
+
+                        </script>
+                        <!-- 300px -->
+                        <div class="d-flex justify-content-center">
+                            <div class="">
+                                <div style="box-shadow: 0 2px 2px 2px black;">
+                                    <div class="title-partie">Ecouter la Radio</div>
+                                    <div class="border-lecteur" style="height: 334px; overflow: hidden;">
+                                        <div class="radionomy-player"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center" style="color: white; margin-bottom: 10px;">
+                             <div class="text-center" style="width: 300px; box-shadow: 0 2px 2px 2px black; overflow: hidden;">
+                                 <!--<p class="actuellement text-center">ACTUELLEMENT</p>-->
+                                    <div class="title-partie">ACTUELLEMENT</div>
+                                    <div style=" height: 85px; padding-top: 10px; background: #181818; margin-top: -5px;">
+                                         <div class="marquee" style="">
+                                             <div style="animation: marquee 5s linear infinite !important;">
+                                                 <span><strong style="text-transform: uppercase;">{{ morceau_en_cours.artists }} : </strong>" {{ morceau_en_cours.title }} "</span>
+                                                 <span><strong style="text-transform: uppercase;">{{ morceau_en_cours.artists }} : </strong>" {{ morceau_en_cours.title }} "</span>
+                                             </div>
+                                         </div>
+                                         <div class="row btns-like" style="margin-top: 15px !important;">
+                                                 <div class="col-6">
+                                                     <form method="post" action="../bdd_topmusic.php" target="_blank">
+                                                         <button class="btn-like btn-like1" type="submit" name="like" value="1">👌 Like</button>
+                                                         <input type="hidden" name="musicname" value="{{ morceau_en_cours.title }}">
+                                                         <input type="hidden" name="musicartist" value="{{ morceau_en_cours.artists }}">
+                                                     </form>
+                                                 </div>
+                                                 <div class="col-6">
+                                                     <form method="post" action="../bdd_topmusic.php" target="_blank">
+                                                         <button class="btn-like btn-like2" type="submit" name="dislike" value="1">👎 Dislike</button>
+                                                         <input type="hidden" name="musicname" value="{{ morceau_en_cours.title }}">
+                                                         <input type="hidden" name="musicartist" value="{{ morceau_en_cours.artists }}">
+                                                     </form>
+                                                 </div>
+                                         </div>
+                                    </div>
+
+                             </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center" style="color: white;">
+                            <div class="" style="width: 300px; box-shadow: 0 2px 2px 2px black; overflow: hidden;">
+                                <div class="title-partie text-center" style="margin-top: 0; margin-bottom: 5px;">FORUM</div>
+                                <div class="row">
+                                    <div class="col-12 text-center mon-compte-lien">
+                                        {% if isConnected|default(false)  %}
+                                            <a href="../compte.php"><i class="fas fa-user"></i> Mon compte</a>
+                                        {% else %}
+                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-user"></i> Se connecter</a>
+                                        {% endif %}
+                                        <hr>
+                                    </div>
+                                    <div class="col-12 text-left">
+                                        <p>Derniers messages postés :</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p style="margin-bottom: 0;">Dernier message posté sur le forum</p>
+                                        <label style="font-size: 8px;">Nom de l'utilisateur</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <a href="../forum.php?forum"><button class="btn btn-success">Voir</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<p style="color: white;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero turpis, feugiat sed arcu in, finibus viverra erat. Proin vitae lacinia metus. Donec dictum convallis augue, et pretium lectus placerat vel. Nullam ut metus nec ex placerat lacinia. Aenean ac neque semper libero viverra ullamcorper. Phasellus tincidunt nunc eu accumsan bibendum. Vestibulum id velit tempor, scelerisque metus eu, posuere ante. Morbi tempus, lorem a pretium condimentum, diam mauris cursus turpis, vitae sollicitudin purus est in tellus. Aenean at diam convallis, pulvinar erat ut, blandit purus. Donec libero lectus, vestibulum eget convallis quis, pellentesque non arcu. Cras eu finibus nisl, et pretium arcu. Quisque eu orci non massa cursus commodo.
+
+                            Sed sed finibus tortor. Aliquam sit amet mi vehicula, tincidunt tortor consectetur, sodales mauris. Integer porttitor ipsum ex, eu consequat lectus faucibus consectetur. Mauris ut ipsum rutrum, finibus quam quis, scelerisque purus. Pellentesque blandit justo non leo posuere, sit amet iaculis ipsum eleifend. Integer efficitur in sapien sit amet tincidunt. Nam eget malesuada massa.
+
+                            Cras vestibulum orci non rhoncus accumsan. Cras commodo luctus fermentum. Vivamus sodales auctor magna, ut imperdiet elit cursus non. Duis consectetur ullamcorper tortor, eu sollicitudin tellus fringilla non. Proin posuere, lorem vitae lacinia porta, felis dui suscipit leo, vitae efficitur mi metus eu ligula. Proin et finibus quam. Vivamus vel lorem purus. Proin finibus elementum arcu, id interdum odio egestas eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent vehicula tempus vehicula. Nunc facilisis tortor quis molestie consequat. Pellentesque tristique, ex sed dictum imperdiet, libero elit venenatis nisl, vitae pellentesque dui quam venenatis orci.
+                        </p>-->
+
+                        <!--<div class="text-center">
+                            <img class="logoPULVRadio" src="../img/PULVRadio_Logo.png">
+                        </div>-->
+                        <div class="text-center" style="color: white !important; bottom: 0;  position:fixed; background: #212121; z-index: 10; width: 315px; padding:10px;">
+
+                                <div class="justify-content-center" style="width: 100%; /*border: 2px solid orange; margin-top: 5px; */ padding-top: 5px; margin-bottom: 5px;">
+                                    <p class="rotate-container">
+                                        <span class="rotate-word">facebook.com/pulvradio</span>
+                                        <span class="rotate-word">#PULVRadio</span>
+                                    </p>
+                                </div>
+
+                        </div>
+
+
+
+                    </div>
+        {% endblock %}
     </header>
     <main>
         {% block main %}{% endblock %}
+        <!-- Modal de connexion -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content  modal-connect">
+                    <div class="text-right" style="padding-right: 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="../bdd_user.php" class="form-connect">
+                        <!--<h3 class="soulignement">Connectez-vous</h3>
+                        <label for="pseudo">Votre pseudo :</label>-->
+                        <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" required>
+
+                        <!--<label for="password">Votre mot de passe :</label>-->
+                        <input id="password" type="password" name="password" placeholder="Mot de passe" required>
+
+                        <input type="hidden" name="url" value="{{ url }}">
+
+                        <button type="submit">Connexion</button>
+
+                        <p>Pas encore de compte ? <a href="../compte.php"> Enregistrez-vous</a></p>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         {% block footer %}{% endblock %}
     </footer>
 
 {% endblock %}
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 <script type="text/javascript" src="../src/style.js"></script>
+<script type="text/javascript" src="../src/avatar.js"></script>
+<!--<script type="text/javascript" src="../src/audio.js"></script>
+<script type="text/javascript" src="../src/range.js"></script>-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>

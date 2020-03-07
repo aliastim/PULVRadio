@@ -1,0 +1,244 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <section style="height: 100%; overflow: auto; background: #111111; color: white;">
+        <div class="text-center" style="padding: 75px 20px 50px; ">
+            <h1 class="soulignement">Podcasts</h1>
+
+            {% if isConnected|default(false)  %}
+                {% if user.admin == "admin"  %}
+                    <div class="w-100 text-left" id="pod0">
+                        <button class="actualite-submit" onclick="actu();"><i class="fas fa-podcast"></i> Publier un podcast</button>
+                    </div>
+
+                    <div class="w-100 text-left" id="pod1">
+                        <form action="../bdd_podcast_new.php" method="post" enctype="multipart/form-data">
+                            <input class="pod-file" type="file" name="file" required><br>
+                            <div class="row">
+                                <input class="pod-text area-article" type="text" name="name" placeholder="Podcast-X" required>
+
+                                <input type="hidden" name="url" value="{{ url }}">
+                                <input type="hidden" name="pseudo" value="{{ user.pseudo }}">
+
+                                <button class="actualite-submit" type="submit" style="width: calc(40% - 10px); margin-left: 10px; height: 35px;"><i class="fas fa-sync-alt"></i> Envoyer</button>
+
+                                <textarea class="form-control area-article" rows="3" name="message" style="margin-bottom: 30px; color: #31bdec;" required placeholder="Décrire les sujets évoqués dans ce podcast..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <script type="text/javascript">
+                        document.getElementById('pod1').classList.add('actu-disallow');
+                        function actu() {
+                            document.getElementById('pod0').classList.add('actu-disallow');
+                            document.getElementById('pod1').classList.remove('actu-disallow');
+                        }
+                    </script>
+                {% endif %}
+            {% endif %}
+
+            {% for podcast in podcasts %}
+            <div class="lecteur-audio-podcasts" style="margin-bottom: 20px;">
+                <div class="pod-lecteur">
+                    <!--<p class="text-left">Mon Podcast :</p>-->
+                    <div class="row d-flex">
+                        <div class="mr-auto">
+                            <audio id="audioPlayer{{ podcast.id }}" class="" style="border-radius: 3rem;" ontimeupdate="update{{ podcast.id }}(this)">
+                                <source type="audio/mp3" src="../podcasts/{{ podcast.file }}">
+                            </audio>
+
+                            <!-- CONTROLS -->
+                            <div class="row">
+                                <button class="control pod-btn" onclick="play{{ podcast.id }}('audioPlayer{{ podcast.id }}', this)" id="play-btn{{ podcast.id }}"><i class="far fa-play-circle"></i></button>
+                                <button class="control pod-btn" onclick="resume{{ podcast.id }}('audioPlayer{{ podcast.id }}')"><i class="far fa-stop-circle"></i></button>
+
+                                <div>
+                                    <div id="progressBarControl" class="pod-progress">
+                                        <div id="progressBar{{ podcast.id }}" class="pod-progressbar" onclick="clickProgress{{ podcast.id }}('audioPlayer{{ podcast.id }}', this, event)">Pas de lecture</div>
+                                    </div>
+                                    <span id="progressTime{{ podcast.id }}">00:00</span>
+                                </div>
+
+
+                                <label class="label-range" style="padding-left: 10px; margin-right: -20px;"><i class="fas fa-volume-off"></i></label>
+                                <div class="range-slider">
+                                    <input class="range-slider__range" type="range" value="100" min="0" max="100" onclick="volume{{ podcast.id }}('audioPlayer{{ podcast.id }}')">
+                                    <!--<span class="range-slider__value">0</span>-->
+                                </div>
+                                <label class="label-range" style="margin-left: -18px;"><i class="fas fa-volume-up"></i></label>
+
+                            </div>
+                        </div>
+                        <div style="padding-top: 4px;">
+                            <a href="../podcasts/{{ podcast.file }}" download="PULVRadio-{{ podcast.name }}" class="download-podcast"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-left">
+
+                <h1 class="pod-name">PULVRadio {{ podcast.name }}</h1>
+                <p class="pod-date">Publié le {{ podcast.date |date("d/m/Y") }}</p>
+
+                <p class="pod-texte">
+                    {{ podcast.message }}
+                </p>
+
+            </div>
+
+                <script>
+                    function play{{ podcast.id }}(idPlayer, control) {
+                        var player = document.querySelector('#' + idPlayer);
+
+                        if (player.paused) {
+                            player.play();
+                            control.innerHTML = '<i class="far fa-pause-circle"></i>';
+                        } else {
+                            player.pause();
+                            control.innerHTML = '<i class="far fa-play-circle"></i>';
+                        }
+                    }
+
+                    function resume{{ podcast.id }}(idPlayer) {
+                        var player = document.querySelector('#' + idPlayer);
+
+                        player.currentTime = 0;
+                        player.pause();
+
+                        document.getElementById("play-btn{{ podcast.id }}").innerHTML = '<i class="far fa-play-circle"></i>';
+                    }
+                    function volume{{ podcast.id }}(idPlayer) {
+                        var player = document.querySelector('#' + idPlayer);
+
+                        var rangeSlider = function(){
+                            var slider = $('.range-slider'),
+                                range = $('.range-slider__range'),
+                                value = $('.range-slider__value');
+
+                            slider.each(function(){
+
+                                value.each(function(){
+                                    var value = $(this).prev().attr('value');
+                                    $(this).html(value);
+
+                                });
+
+                                range.on('input', function(){
+                                    $(this).next(value).html(this.value);
+                                    console.log((this.value)/100);
+                                    player.volume = ((this.value)/100);
+                                });
+                            });
+                        };
+
+                        rangeSlider();
+
+                    }
+
+                    function update{{ podcast.id }}(player) {
+                        var duration = player.duration;    // Durée totale
+                        var time     = player.currentTime; // Temps écoulé
+                        var fraction = time / duration;
+                        var percent  = Math.ceil(fraction * 100);
+
+                        var progress = document.querySelector('#progressBar{{ podcast.id }}');
+
+                        progress.style.width = percent + '%';
+                        progress.textContent = percent + '%';
+
+                        document.querySelector('#progressTime{{ podcast.id }}').textContent = formatTime{{ podcast.id }}(time);
+
+                        if (percent === 100 )
+                        {
+                            document.getElementById("play-btn{{ podcast.id }}").innerHTML = '<i class="far fa-play-circle"></i>';
+                        }
+                    }
+
+                    function formatTime{{ podcast.id }}(time) {
+                        var hours = Math.floor(time / 3600);
+                        var mins  = Math.floor((time % 3600) / 60);
+                        var secs  = Math.floor(time % 60);
+
+                        if (secs < 10) {
+                            secs = "0" + secs;
+                        }
+
+                        if (hours) {
+                            if (mins < 10) {
+                                mins = "0" + mins;
+                            }
+
+                            return hours + ":" + mins + ":" + secs; // hh:mm:ss
+                        } else {
+                            return mins + ":" + secs; // mm:ss
+                        }
+                    }
+
+                    function getMousePosition{{ podcast.id }}(event) {
+                        return {
+                            x: event.pageX,
+                            y: event.pageY
+                        };
+                    }
+
+                    function getPosition{{ podcast.id }}(element){
+                        var top = 0, left = 0;
+
+                        do {
+                            top  += element.offsetTop;
+                            left += element.offsetLeft;
+                        } while (element = element.offsetParent);
+
+                        return { x: left, y: top };
+                    }
+
+                    function clickProgress{{ podcast.id }}(idPlayer, control, event) {
+                        var parent = getPosition{{ podcast.id }}(control);    // La position absolue de la progressBar
+                        var target = getMousePosition{{ podcast.id }}(event); // L'endroit de la progressBar où on a cliqué
+                        var player = document.querySelector('#' + idPlayer);
+
+                        var x = target.x - parent.x;
+                        var wrapperWidth = document.querySelector('#progressBarControl{{ podcast.id }}').offsetWidth;
+
+                        var percent = Math.ceil((x / wrapperWidth) * 100);
+                        var duration = player.duration;
+
+                        player.currentTime = (duration * percent) / 100;
+                    }
+
+                    /* https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1921854-laudio-et-la-video */
+                </script>
+            {% endfor %}
+
+
+
+
+        </div>
+
+
+        <nav aria-label="Navigation Podcast" class="nav-podcasts w-100">
+            <ul class="pagination justify-content-center">
+                <li class="page-item nav-pod-control"><a class="page-link" href="?page=1">Première page</a></li>
+                <li class="page-item nav-pod-control {% if currentPage <= 1 %} disabled {% endif %}"><a class="page-link"
+                                                                                        href="?page={{ currentPage - 1 }}">&laquo;</a>
+                </li>
+                {% for i in minPage..(currentPage - 1) if (currentPage > 1) %}
+                    <li class="page-item nav-pod-control"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+
+                <li class="page-item nav-pod-control active"><a class="page-link" href="?page={{ currentPage }}">{{ currentPage }}</a>
+
+                    {% for i in (currentPage + 1)..maxPage if (currentPage < maxPagination) %}
+                <li class="page-item nav-pod-control"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                <li class="page-item nav-pod-control {% if currentPage >= maxPagination %} disabled {% endif %}"><a class="page-link"
+                                                                                                    href="?page={{ currentPage + 1 }}">&raquo;</a>
+                </li>
+                <li class="page-item nav-pod-control"><a class="page-link" href="?page={{ maxPagination }}">Dernière page</a></li>
+            </ul>
+        </nav>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <section style="padding-bottom: 50px; padding-top: 75px; background: white; height: 100%;">
+        <div>
+            <div class="row">
+                <div class="col-3 col-xl-2 nav-forum">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link tab-forum {% if forum|default(false) or pulvjump|default(false)%} {% else %}active{% endif %}" id="bienvenue-tab" data-toggle="pill" href="#bienvenue" role="tab" aria-controls="bienvenue" aria-selected="true">Bienvenue !</a>
+                        <a class="nav-link tab-forum {% if forum|default(false) %}active{% endif %}" id="forum-tab" data-toggle="pill" href="#forum" role="tab" aria-controls="forum" aria-selected="false">Forum</a>
+                        <a class="nav-link tab-forum {% if pulvjump|default(false) %}active{% endif %}" id="pulvjump-tab" data-toggle="pill" href="#pulvjump" role="tab" aria-controls="pulvjump" aria-selected="false">PULV Jump</a>
+                    </div>
+                </div>
+                <div class="col-9 col-xl-10" style="padding: 0;">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade {% if forum|default(false) or pulvjump|default(false)%} {% else %}show active{% endif %}" id="bienvenue" role="tabpanel" aria-labelledby="bienvenue-tab">
+                            <div class="interieur-forum text-center">
+                                <div style="height: 100%; overflow: auto;">
+                                    <h1>Le Forum !</h1>
+                                    <p>
+                                        Seuls les 10 derniers messages sont affichés ! Soyez courtois, ne publiez pas d'insultes ou de propos inappropriés.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade {% if forum|default(false) %}show active{% endif %}" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                            <div class="interieur-forum-2 text-left">
+                                <div style="height: 100%; overflow: auto;">
+                                    <div class="container" style="padding-top: 20px;">
+                                        {% for message in messages %}
+                                            <div class="message-forum">
+                                                <div class="row" style="margin-bottom: -30px !important;">
+                                                    <img class="forum-avatar" src="../img/miniatures/{{ message.user.avatar }}.png">
+                                                    <p><strong><a href="../utilisateur.php?utilisateur={{ message.user.pseudo }}" style="color: white;">{{ message.user.pseudo }}</a></strong><br><label>{{ message.date |date("d/m/Y") }} (<i>{{ message.date |date("H:i:s") }}</i>)</label></p>
+                                                </div>
+                                                <hr style="border-color: white; opacity: 0.5;">
+                                                <div>
+                                                    <p>
+                                                       {{ message.message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="forum-form ">
+                                    {% if isConnected|default(false)  %}
+                                    <form method="post" action="../bdd_forum_messages.php">
+                                        <div class="row">
+                                            <div class="col-10" style="padding-right: 0;">
+                                                <div class="form-group"><!--  d-flex justify-content-center -->
+                                                    <textarea class="form-control forum-textarea" name="message" placeholder="Ecrivez votre message ici"></textarea>
+                                                    <input type="hidden" name="username" value="{{ username }}">
+                                                    <input type="hidden" name="userid" value="{{ userid }}">
+                                                    <input type="hidden" name="url" value="{{ url }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-2" style="padding-left: 0;">
+                                                <button class="forum-submit" type="submit">Poster</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {% else %}
+                                        <p class="text-center" style="color: white;">Vous devez vous connecter pour poster un message</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade {% if pulvjump|default(false) %}show active{% endif %}" id="pulvjump" role="tabpanel" aria-labelledby="pulvjump-tab" style="/*background: #111111;*/ background: url(../img/doodle/space_txt.png) top left;">
+                            <div class="interieur-forum text-center">
+                                <div class="d-flex justify-content-center" style="height: 100%; overflow: auto; position:relative;">
+                                                <div class="doodle-container" style="position:absolute; top: 50%; transform: translateY(-50%);">
+                                                    <canvas class="doodle-canvas" id="canvas">
+                                                        Aww, votre navigateur ne supporte pas le HTML5!
+                                                    </canvas>
+
+                                                    <div id="mainMenu">
+                                                        <h1>PULV jump</h1>
+
+                                                        <p class="info">
+                                                            utilisez
+                                                            <span class="doodle-key doodle-left">←</span>
+                                                            <span class="doodle-key doodle-right">→</span>
+                                                            pour vous déplacer et espace pour (re) jouer...
+                                                        </p>
+                                                        <a class="doodle-button" href="javascript:init()" style="color: white;">Jouer</a>
+                                                    </div>
+
+                                                    <div id="gameOverMenu">
+                                                        <h1>Game Over!</h1>
+                                                        <h3 id="go_score">Votre score est de 0 points</h3>
+
+                                                        <a class="doodle-button" href="javascript:reset()" style="color: white;">Rejouer</a>
+                                                    </div>
+
+
+                                                    <!-- Preloading image ;) -->
+                                                    <img id="sprite" src="../img/doodle/doodle_neon.png"/>
+
+                                                </div>
+                                    <div id="scoreBoard">
+                                        <p id="score">0</p>
+                                    </div>
+
+                                    <script src="../src/doodle.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
